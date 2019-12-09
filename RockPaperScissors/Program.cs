@@ -5,7 +5,7 @@ namespace RockPaperScissors
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             string playerInput;
@@ -113,21 +113,11 @@ namespace RockPaperScissors
                 }
                 //to make screen less cluttered and make it clear game has ended
                 Console.Clear();
+
                 //game will play until someone reaches score 3 then declare a winner
-                if (playerScore == 3)
-                {
-                    Console.WriteLine("You won the game!");
 
-                }
-                else if (cpuScore == 3)
-                {
-                    Console.WriteLine("Opponent has won this game!");
-
-                }
-                Console.WriteLine("SCORES: Opponent {0} , YOU {1}", cpuScore, playerScore);
-                Console.WriteLine("Rock was used {0} times.", rockCount);
-                Console.WriteLine("Paper was used {0} times.", paperCount);
-                Console.WriteLine("Scissors was used {0} times.", scissorsCount);
+                Console.WriteLine(ScoreDisplay(playerScore, cpuScore, rockCount, paperCount, scissorsCount));
+                
 
                 //asks user if they want to play again, resets scores and counts if yes, closes if no
 
@@ -144,6 +134,23 @@ namespace RockPaperScissors
 
                                                                                                                    
             }
+        }
+        public static string ScoreDisplay(int pScore, int cScore, int rCount, int pCount, int sCount)
+        {
+            List<string> scoreOutput = new List<string>();
+
+            if (pScore == 3)
+            {
+                scoreOutput.Add("You won the game!/n");
+
+            }
+            else if (cScore == 3)
+            {
+                scoreOutput.Add("Opponent has won this game!/n");
+
+            }
+            scoreOutput.Add("SCORES: Opponent {cScore} , YOU {pScore}/n Rock was used {rCOunt} times./n Paper was used {0} times./n Scissors was used {0} times.");
+            return scoreOutput.ToString();
         }
 
 
