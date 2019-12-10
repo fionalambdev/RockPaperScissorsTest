@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RockPaperScissors
 {
-    class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -116,7 +116,9 @@ namespace RockPaperScissors
 
                 //game will play until someone reaches score 3 then declare a winner
 
-                Console.WriteLine(ScoreDisplay(playerScore, cpuScore, rockCount, paperCount, scissorsCount));
+                Console.WriteLine(WinnerDisplay(playerScore, cpuScore));
+                Console.WriteLine(ScoreDisplay(playerScore, cpuScore));
+                Console.WriteLine(MovesDisplay(rockCount, paperCount, scissorsCount));
                 
 
                 //asks user if they want to play again, resets scores and counts if yes, closes if no
@@ -135,22 +137,51 @@ namespace RockPaperScissors
                                                                                                                    
             }
         }
-        public static string ScoreDisplay(int pScore, int cScore, int rCount, int pCount, int sCount)
+        public static string WinnerDisplay(int pScore, int cScore)
         {
-            List<string> scoreOutput = new List<string>();
+            List<string> winnerOutputList = new List<string>();
 
             if (pScore == 3)
             {
-                scoreOutput.Add("You won the game!/n");
+                winnerOutputList.Add("You won the game!");
 
             }
             else if (cScore == 3)
             {
-                scoreOutput.Add("Opponent has won this game!/n");
+                winnerOutputList.Add("Opponent has won this game!");
 
             }
-            scoreOutput.Add("SCORES: Opponent {cScore} , YOU {pScore}/n Rock was used {rCOunt} times./n Paper was used {0} times./n Scissors was used {0} times.");
-            return scoreOutput.ToString();
+            
+            string scoreOutput = string.Join(".", winnerOutputList);
+                         
+            return scoreOutput;
+        }
+
+        public static string ScoreDisplay(int pScore, int cScore)
+        {
+            List<string> scoreOutputList = new List<string>();
+
+            scoreOutputList.Add("SCORES: Opponent: " + cScore);  ;
+            scoreOutputList.Add("YOU: " + pScore);
+            
+
+            string scoreOutput = string.Join(Environment.NewLine, scoreOutputList);
+
+            return scoreOutput;
+        }
+
+        public static string MovesDisplay(int rCount, int pCount, int sCount)
+        {
+            List<string> movesOutputList = new List<string>();
+
+            movesOutputList.Add("Rock was used: " + rCount + " times.");
+            movesOutputList.Add("Paper was used: " + pCount + " times.");
+            movesOutputList.Add("Scissors was used: " + sCount + " times.");
+
+            string movesOutput = string.Join(Environment.NewLine, movesOutputList);
+
+            return movesOutput;
+
         }
 
 

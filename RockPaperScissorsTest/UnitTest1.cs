@@ -1,16 +1,14 @@
-﻿using System;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-
-
+using RockPaperScissors;
 
 namespace RockPaperScissorsTest
 {
     [TestClass]
-    public class ScoreDisplayTests
+    public class UnitTest1
     {
         [TestMethod]
-        public void DoScoresDisplayCorrectly()
+        public void TestMethod1()
         {
             string result;
             string expectedResult;
@@ -19,11 +17,9 @@ namespace RockPaperScissorsTest
             int rockCount = 2;
             int paperCount = 3;
             int scissorsCount = 3;
-            
-
-            expectedResult = Program.ScoreDisplay(3, 1, 2, 3, 3);
 
 
+            result = RockPaperScissors.Program.ScoreDisplay(3, 1, 2, 3, 3);
         }
     }
 }
