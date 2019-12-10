@@ -5,21 +5,50 @@ using RockPaperScissors;
 namespace RockPaperScissorsTest
 {
     [TestClass]
-    public class UnitTest1
-    {
+    public class RockPaperScissorsDisplayTests
+    {   
+        // tests to see if the winner result is displayed correctly
         [TestMethod]
-        public void TestMethod1()
+        public void WinnerDisplayTest()
         {
-            string result;
-            string expectedResult;
-            int playerScore = 3;
-            int cpuScore = 1;
-            int rockCount = 2;
-            int paperCount = 3;
-            int scissorsCount = 3;
+            int pScoreTest = 3;
+            int cpuScoreTest = 1;
+
+            string expectedResult = "You won the game!";
+
+            string result = RockPaperScissors.Program.WinnerDisplay(pScoreTest, cpuScoreTest);
+            Assert.AreEqual(expectedResult, result);
 
 
-            result = RockPaperScissors.Program.ScoreDisplay(3, 1, 2, 3, 3);
+        }
+        [TestMethod]
+        public void ScoreDisplayTest()
+        {
+            int pScoreTest = 3;
+            int cpuScoreTest = 1;
+
+            string expectedResult = "SCORES: Opponent: 1\r\nYOU: 3";
+
+            string result = RockPaperScissors.Program.ScoreDisplay(pScoreTest, cpuScoreTest);
+
+            Assert.AreEqual(expectedResult, result);
+
+
+
+        }
+        [TestMethod]
+        public void MovesDisplayTest()
+        {
+            int rCountTest = 3;
+            int pCountTest = 1;
+            int sCountTest = 2;
+
+            string expectedResult = "Rock was used: 3 times.\r\nPaper was used: 1 times.\r\nScissors was used: 2 times.";
+
+
+            string result = RockPaperScissors.Program.MovesDisplay(rCountTest, pCountTest, sCountTest);
+
+            Assert.AreEqual(result, expectedResult);
         }
     }
 }

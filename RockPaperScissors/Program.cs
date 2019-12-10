@@ -152,7 +152,7 @@ namespace RockPaperScissors
 
             }
             
-            string scoreOutput = string.Join(".", winnerOutputList);
+            string scoreOutput = string.Join("", winnerOutputList);
                          
             return scoreOutput;
         }
